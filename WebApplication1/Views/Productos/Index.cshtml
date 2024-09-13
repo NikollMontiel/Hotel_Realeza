@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplication1.Models.Productos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Productos</h2>
+
+<p>
+    @Html.ActionLink("Registrar producto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            Fecha de vencimiento
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Existencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            Estado del producto
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_vencimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Existencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoP)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_Producto }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_Producto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_Producto })
+        </td>
+    </tr>
+}
+
+</table>

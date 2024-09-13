@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Habitaciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Habitaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Número de habitación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            Estado de la habitación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoH)
+        </dd>
+
+        <dt>
+            Tipo de habitación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Hab.Tipo_hab1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_Hab }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

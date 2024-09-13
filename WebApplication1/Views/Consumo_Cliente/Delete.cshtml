@@ -1,0 +1,80 @@
+﻿@model WebApplication1.Models.Consumo_Cliente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Consumo_Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad_Consumida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad_Consumida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.PNC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.PNC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitaciones.ID_Hab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitaciones.ID_Hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Productos.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Productos.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Refrigeradores.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Refrigeradores.Marca)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

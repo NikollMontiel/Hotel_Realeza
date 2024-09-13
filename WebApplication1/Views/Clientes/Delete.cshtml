@@ -1,0 +1,72 @@
+﻿@model WebApplication1.Models.Clientes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Está seguro que quiere eliminar este registro?</h3>
+<div>
+    <h4>Clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Primer nombre cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PNC)
+        </dd>
+
+        <dt>
+            Segundo nombre cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SNC)
+        </dd>
+
+        <dt>
+            Primer apellido cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAC)
+        </dd>
+
+        <dt>
+            Segundo apellido cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SAC)
+        </dd>
+
+        <dt>
+            Teléfono
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelC)
+        </dd>
+
+        <dt>
+            Estado del cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoC)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

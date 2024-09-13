@@ -1,0 +1,264 @@
+﻿@model WebApplication1.Models.Usuarios
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+@*<h2>Login</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Usuarios</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre_Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre_Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre_Usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Contraseña, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Contraseña, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ID_Rol, "ID_Rol", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ID_Rol", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_Rol, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Hotel Realeza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+
+            <div class="login-box">
+                <center><img src="~/Content/Imagenes/logohr.jpg" height="200" width="200"></center>
+                <h2>Inicio de sesión</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <input type="text" name="Nombre_Usuario" required>
+                        <label>Usuario</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="password" name="Contraseña" required>
+                        <label>Contraseña</label>
+                    </div>
+                    <center><label style="color:red">@ViewBag.Mensaje</label></center>
+
+                    @*<div class="forgot-pass">
+            <a href="#">Forgot your password?</a>
+        </div>*@
+
+                    @if (ViewBag.Bloqueado == true)
+                    {
+                        <button type="submit" class="btn" disabled>Login</button>
+
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn">Login</button>
+                    }
+                </form>
+            </div>
+
+            
+        </div>
+    }
+        <style>
+            @@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: #022358;
+                /*background-image: url("../../Content/Imagenes/logohr.jpg");*/
+            }
+
+            .container {
+                position: relative;
+                width: 250px;
+                height: 250px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .container span {
+                    position: absolute;
+                    left: 0;
+                    width: 32px;
+                    height: 6px;
+                    background: #65662c;
+                    border-radius: 8px;
+                    transform-origin: 128px;
+                    transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+                    animation: animateBlink 3s linear infinite;
+                    animation-delay: calc(var(--i) * (3s / 50));
+                }
+
+            @@keyframes animateBlink {
+                0% {
+                    background: #fbff00;
+                }
+
+                25% {
+                    background: #65662c;
+                }
+            }
+
+            .login-box {
+                position: absolute;
+                width: 400px;
+            }
+
+                .login-box form {
+                    width: 100%;
+                    padding: 0 50px;
+                }
+
+            h2 {
+                font-size: 2em;
+                text-align: center;
+                color: #eeb810;
+            }
+
+            .input-box {
+                position: relative;
+                margin: 25px 0;
+            }
+
+                .input-box input {
+                    width: 100%;
+                    height: 50px;
+                    background: transparent;
+                    border: 2px solid #65662c;
+                    outline: none;
+                    border-radius: 40px;
+                    font-size: 1em;
+                    color: #fff;
+                    padding: 0 20px;
+                    transition: .5s ease;
+                }
+
+                    .input-box input:focus,
+                    .input-box input:valid {
+                        border-color: #fbff00;
+                    }
+
+                .input-box label {
+                    position: absolute;
+                    top: 50%;
+                    left: 20px;
+                    transform: translateY(-50%);
+                    font-size: 1em;
+                    color: #fff;
+                    pointer-events: none;
+                    transition: .5s ease;
+                }
+
+                .input-box input:focus ~ label,
+                .input-box input:valid ~ label {
+                    top: 1px;
+                    font-size: .8em;
+                    background: #1f293a;
+                    padding: 0 6px;
+                    color: #fbff00;
+                }
+
+            .forgot-pass {
+                margin: -15px 0 10px;
+                text-align: center;
+            }
+
+                .forgot-pass a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-size: .85em;
+                }
+
+                    .forgot-pass a:hover {
+                        text-decoration: underline;
+                    }
+
+            .btn {
+                width: 100%;
+                height: 45px;
+                background: linear-gradient(#fbff00, #1f293a);
+                border: none;
+                outline: none;
+                border-radius: 40px;
+                cursor: pointer;
+                font-size: 1em;
+                font-weight: 600;
+                color: #fff;
+                transform: .5s ease;
+            }
+
+                .btn:hover {
+                    background: linear-gradient(#1f293a, #eeb810);
+                    transform: scale(1.05);
+                }
+
+            .signup-link {
+                margin: 20px 0 10px;
+                text-align: center;
+            }
+
+                .signup-link a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 1em;
+                    font-weight: 700;
+                }
+
+                    .signup-link a:hover {
+                        text-decoration: underline;
+                    }
+        </style>
+    </body>
+</html>
+

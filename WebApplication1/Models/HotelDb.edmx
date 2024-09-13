@@ -1,0 +1,1778 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Hotel_Peor_Es_NadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PNC" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SNC" Type="nvarchar" MaxLength="15" />
+          <Property Name="PAC" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SAC" Type="nvarchar" MaxLength="15" />
+          <Property Name="TelC" Type="char" MaxLength="8" />
+          <Property Name="EstadoC" Type="bit" />
+        </EntityType>
+        <EntityType Name="Compra_Producto">
+          <Key>
+            <PropertyRef Name="ID_Compra" />
+          </Key>
+          <Property Name="ID_Compra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Prov" Type="int" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Fecha_Compra" Type="date" Nullable="false" />
+          <Property Name="Total_pago" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consumo_Cliente">
+          <Key>
+            <PropertyRef Name="ID_consumo" />
+          </Key>
+          <Property Name="ID_consumo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="ID_Refrigerador" Type="int" Nullable="false" />
+          <Property Name="ID_Hab" Type="int" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+          <Property Name="Cantidad_Consumida" Type="int" Nullable="false" />
+          <Property Name="Total_pago" Type="money" Nullable="false" />
+          <Property Name="EstadoCC" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuenta_Cliente">
+          <Key>
+            <PropertyRef Name="ID_Cuenta" />
+          </Key>
+          <Property Name="ID_Cuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="ID_Hab" Type="int" Nullable="false" />
+          <Property Name="ID_Reserva" Type="int" Nullable="false" />
+          <Property Name="Forma_Pago" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Total_llamadas" Type="money" Nullable="false" />
+          <Property Name="Total_Refrigerador" Type="money" Nullable="false" />
+          <Property Name="Total_estancia" Type="money" Nullable="false" />
+          <Property Name="Total_a_pagar" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Devolucion_Producto">
+          <Key>
+            <PropertyRef Name="ID_Dev" />
+          </Key>
+          <Property Name="ID_Dev" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+          <Property Name="ID_Prov" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Fecha_Dev" Type="date" Nullable="false" />
+          <Property Name="Motivo_Dev" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Total_Dev" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="ID_Evento" />
+          </Key>
+          <Property Name="ID_Evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="ID_tipo_evento" Type="int" Nullable="false" />
+          <Property Name="Costo_Evento" Type="money" Nullable="false" />
+          <Property Name="Fecha_Evento" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura_O_Boleta">
+          <Key>
+            <PropertyRef Name="ID_Fac" />
+          </Key>
+          <Property Name="ID_Fac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RUT" Type="nvarchar" MaxLength="9" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="Total_Pago" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Forma_Pago">
+          <Key>
+            <PropertyRef Name="ID_FPago" />
+          </Key>
+          <Property Name="ID_FPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Forma_Pago" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habitaciones">
+          <Key>
+            <PropertyRef Name="ID_Hab" />
+          </Key>
+          <Property Name="ID_Hab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero_hab" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="ID_TipoHab" Type="int" Nullable="false" />
+          <Property Name="EstadoH" Type="bit" />
+        </EntityType>
+        <EntityType Name="llamadas_Cliente">
+          <Key>
+            <PropertyRef Name="ID_llamada" />
+          </Key>
+          <Property Name="ID_llamada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Costo_llamada" Type="money" Nullable="false" />
+          <Property Name="ID_Tel" Type="int" Nullable="false" />
+          <Property Name="ID_tipo_llamada" Type="int" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="ID_Hab" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ID_Producto" />
+          </Key>
+          <Property Name="ID_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="fecha_vencimiento" Type="date" Nullable="false" />
+          <Property Name="Existencia" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="EstadoP" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos_baño_hab">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+          <Property Name="ID_Hab" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="ID_Prov" />
+          </Key>
+          <Property Name="ID_Prov" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PNP" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SNP" Type="nvarchar" MaxLength="15" />
+          <Property Name="PAP" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SAP" Type="nvarchar" MaxLength="15" />
+          <Property Name="TelP" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Refrigerador_Productos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="ID_Refrigerador" Type="int" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refrigeradores">
+          <Key>
+            <PropertyRef Name="ID_Refrigerador" />
+          </Key>
+          <Property Name="ID_Refrigerador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ID_Hab" Type="int" Nullable="false" />
+          <Property Name="EstadoR" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservaciones">
+          <Key>
+            <PropertyRef Name="ID_reserva" />
+          </Key>
+          <Property Name="ID_reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_reserva" Type="date" Nullable="false" />
+          <Property Name="ID_Hab" Type="int" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="tiempo_instancia" Type="int" Nullable="false" />
+          <Property Name="Estado_salida" Type="bit" Nullable="false" />
+          <Property Name="ID_FPago" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Rol" />
+          </Key>
+          <Property Name="ID_Rol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Telefonos_Hab">
+          <Key>
+            <PropertyRef Name="ID_Tel" />
+          </Key>
+          <Property Name="ID_Tel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Hab" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Evento">
+          <Key>
+            <PropertyRef Name="ID_tipo_evento" />
+          </Key>
+          <Property Name="ID_tipo_evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_Evento" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Hab">
+          <Key>
+            <PropertyRef Name="ID_TipoHab" />
+          </Key>
+          <Property Name="ID_TipoHab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_hab" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_llamada">
+          <Key>
+            <PropertyRef Name="ID_tipo_llamada" />
+          </Key>
+          <Property Name="ID_tipo_llamada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_llamada" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID_U" />
+          </Key>
+          <Property Name="ID_U" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Usuario" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID_Rol" Type="int" Nullable="false" />
+          <Property Name="intentos" Type="int" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Compra_Pr__ID_Pr__6FE99F9F">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Compra_Producto" Type="Self.Compra_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="ID_Prov" />
+            </Principal>
+            <Dependent Role="Compra_Producto">
+              <PropertyRef Name="ID_Prov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compra_Pr__ID_Pr__70DDC3D8">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Compra_Producto" Type="Self.Compra_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Compra_Producto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo_C__ID_Cl__4CA06362">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo_C__ID_Ha__4E88ABD4">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo_C__ID_Pr__4F7CD00D">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo_C__ID_Re__4D94879B">
+          <End Role="Refrigeradores" Type="Self.Refrigeradores" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Refrigeradores">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuenta_Cl__ID_Cl__60A75C0F">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Cuenta_Cliente" Type="Self.Cuenta_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Cuenta_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuenta_Cl__ID_Ha__619B8048">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Cuenta_Cliente" Type="Self.Cuenta_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Cuenta_Cliente">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuenta_Cl__ID_Re__628FA481">
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="1" />
+          <End Role="Cuenta_Cliente" Type="Self.Cuenta_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservaciones">
+              <PropertyRef Name="ID_reserva" />
+            </Principal>
+            <Dependent Role="Cuenta_Cliente">
+              <PropertyRef Name="ID_Reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devolucio__ID_Pr__73BA3083">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Devolucion_Producto" Type="Self.Devolucion_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Devolucion_Producto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devolucio__ID_Pr__74AE54BC">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Devolucion_Producto" Type="Self.Devolucion_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="ID_Prov" />
+            </Principal>
+            <Dependent Role="Devolucion_Producto">
+              <PropertyRef Name="ID_Prov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos__ID_Clie__693CA210">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos__ID_tipo__6A30C649">
+          <End Role="Tipo_Evento" Type="Self.Tipo_Evento" Multiplicity="1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Evento">
+              <PropertyRef Name="ID_tipo_evento" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="ID_tipo_evento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Factura_O__ID_Cl__6477ECF3">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Factura_O_Boleta" Type="Self.Factura_O_Boleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Factura_O_Boleta">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Habitacio__ID_Ti__3C69FB99">
+          <End Role="Tipo_Hab" Type="Self.Tipo_Hab" Multiplicity="1" />
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Hab">
+              <PropertyRef Name="ID_TipoHab" />
+            </Principal>
+            <Dependent Role="Habitaciones">
+              <PropertyRef Name="ID_TipoHab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_Cl__5CD6CB2B">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_Ha__5DCAEF64">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_Te__5AEE82B9">
+          <End Role="Telefonos_Hab" Type="Self.Telefonos_Hab" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telefonos_Hab">
+              <PropertyRef Name="ID_Tel" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_Tel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_ti__5BE2A6F2">
+          <End Role="Tipo_llamada" Type="Self.Tipo_llamada" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_llamada">
+              <PropertyRef Name="ID_tipo_llamada" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_tipo_llamada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productos__ID_Ha__534D60F1">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Productos_baño_hab" Type="Self.Productos_baño_hab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Productos_baño_hab">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productos__ID_Pr__52593CB8">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Productos_baño_hab" Type="Self.Productos_baño_hab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Productos_baño_hab">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Refrigera__ID_Ha__440B1D61">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Refrigeradores" Type="Self.Refrigeradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Refrigeradores">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Refrigera__ID_Pr__49C3F6B7">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Refrigerador_Productos" Type="Self.Refrigerador_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Refrigerador_Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Refrigera__ID_Re__48CFD27E">
+          <End Role="Refrigeradores" Type="Self.Refrigeradores" Multiplicity="1" />
+          <End Role="Refrigerador_Productos" Type="Self.Refrigerador_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Refrigeradores">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Principal>
+            <Dependent Role="Refrigerador_Productos">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__ID_Cl__403A8C7D">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__ID_FP__1F98B2C1">
+          <End Role="Forma_Pago" Type="Self.Forma_Pago" Multiplicity="1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forma_Pago">
+              <PropertyRef Name="ID_FPago" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="ID_FPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__ID_Ha__3F466844">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Telefonos__ID_Ha__5629CD9C">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Telefonos_Hab" Type="Self.Telefonos_Hab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Telefonos_Hab">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__ID_Rol__69FBBC1F">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Rol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="ID_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Hotel_Peor_Es_NadaModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compra_Producto" EntityType="Self.Compra_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consumo_Cliente" EntityType="Self.Consumo_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuenta_Cliente" EntityType="Self.Cuenta_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Devolucion_Producto" EntityType="Self.Devolucion_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura_O_Boleta" EntityType="Self.Factura_O_Boleta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forma_Pago" EntityType="Self.Forma_Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitaciones" EntityType="Self.Habitaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="llamadas_Cliente" EntityType="Self.llamadas_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos_baño_hab" EntityType="Self.Productos_baño_hab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refrigerador_Productos" EntityType="Self.Refrigerador_Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refrigeradores" EntityType="Self.Refrigeradores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservaciones" EntityType="Self.Reservaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Telefonos_Hab" EntityType="Self.Telefonos_Hab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Evento" EntityType="Self.Tipo_Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Hab" EntityType="Self.Tipo_Hab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_llamada" EntityType="Self.Tipo_llamada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Compra_Pr__ID_Pr__6FE99F9F" Association="Self.FK__Compra_Pr__ID_Pr__6FE99F9F">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Compra_Producto" EntitySet="Compra_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compra_Pr__ID_Pr__70DDC3D8" Association="Self.FK__Compra_Pr__ID_Pr__70DDC3D8">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Compra_Producto" EntitySet="Compra_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo_C__ID_Cl__4CA06362" Association="Self.FK__Consumo_C__ID_Cl__4CA06362">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo_C__ID_Ha__4E88ABD4" Association="Self.FK__Consumo_C__ID_Ha__4E88ABD4">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo_C__ID_Pr__4F7CD00D" Association="Self.FK__Consumo_C__ID_Pr__4F7CD00D">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo_C__ID_Re__4D94879B" Association="Self.FK__Consumo_C__ID_Re__4D94879B">
+            <End Role="Refrigeradores" EntitySet="Refrigeradores" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuenta_Cl__ID_Cl__60A75C0F" Association="Self.FK__Cuenta_Cl__ID_Cl__60A75C0F">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuenta_Cliente" EntitySet="Cuenta_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuenta_Cl__ID_Ha__619B8048" Association="Self.FK__Cuenta_Cl__ID_Ha__619B8048">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Cuenta_Cliente" EntitySet="Cuenta_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuenta_Cl__ID_Re__628FA481" Association="Self.FK__Cuenta_Cl__ID_Re__628FA481">
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+            <End Role="Cuenta_Cliente" EntitySet="Cuenta_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devolucio__ID_Pr__73BA3083" Association="Self.FK__Devolucio__ID_Pr__73BA3083">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Devolucion_Producto" EntitySet="Devolucion_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devolucio__ID_Pr__74AE54BC" Association="Self.FK__Devolucio__ID_Pr__74AE54BC">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Devolucion_Producto" EntitySet="Devolucion_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos__ID_Clie__693CA210" Association="Self.FK__Eventos__ID_Clie__693CA210">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos__ID_tipo__6A30C649" Association="Self.FK__Eventos__ID_tipo__6A30C649">
+            <End Role="Tipo_Evento" EntitySet="Tipo_Evento" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Factura_O__ID_Cl__6477ECF3" Association="Self.FK__Factura_O__ID_Cl__6477ECF3">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Factura_O_Boleta" EntitySet="Factura_O_Boleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Habitacio__ID_Ti__3C69FB99" Association="Self.FK__Habitacio__ID_Ti__3C69FB99">
+            <End Role="Tipo_Hab" EntitySet="Tipo_Hab" />
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_Cl__5CD6CB2B" Association="Self.FK__llamadas___ID_Cl__5CD6CB2B">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_Ha__5DCAEF64" Association="Self.FK__llamadas___ID_Ha__5DCAEF64">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_Te__5AEE82B9" Association="Self.FK__llamadas___ID_Te__5AEE82B9">
+            <End Role="Telefonos_Hab" EntitySet="Telefonos_Hab" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_ti__5BE2A6F2" Association="Self.FK__llamadas___ID_ti__5BE2A6F2">
+            <End Role="Tipo_llamada" EntitySet="Tipo_llamada" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productos__ID_Ha__534D60F1" Association="Self.FK__Productos__ID_Ha__534D60F1">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Productos_baño_hab" EntitySet="Productos_baño_hab" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productos__ID_Pr__52593CB8" Association="Self.FK__Productos__ID_Pr__52593CB8">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Productos_baño_hab" EntitySet="Productos_baño_hab" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Refrigera__ID_Ha__440B1D61" Association="Self.FK__Refrigera__ID_Ha__440B1D61">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Refrigeradores" EntitySet="Refrigeradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Refrigera__ID_Pr__49C3F6B7" Association="Self.FK__Refrigera__ID_Pr__49C3F6B7">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Refrigerador_Productos" EntitySet="Refrigerador_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Refrigera__ID_Re__48CFD27E" Association="Self.FK__Refrigera__ID_Re__48CFD27E">
+            <End Role="Refrigeradores" EntitySet="Refrigeradores" />
+            <End Role="Refrigerador_Productos" EntitySet="Refrigerador_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__ID_Cl__403A8C7D" Association="Self.FK__Reservaci__ID_Cl__403A8C7D">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__ID_FP__1F98B2C1" Association="Self.FK__Reservaci__ID_FP__1F98B2C1">
+            <End Role="Forma_Pago" EntitySet="Forma_Pago" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__ID_Ha__3F466844" Association="Self.FK__Reservaci__ID_Ha__3F466844">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Telefonos__ID_Ha__5629CD9C" Association="Self.FK__Telefonos__ID_Ha__5629CD9C">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Telefonos_Hab" EntitySet="Telefonos_Hab" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__ID_Rol__69FBBC1F" Association="Self.FK__Usuarios__ID_Rol__69FBBC1F">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Hotel_Peor_Es_NadaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PNC" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SNC" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PAC" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SAC" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TelC" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="EstadoC" Type="Boolean" />
+          <NavigationProperty Name="Consumo_Cliente" Relationship="Self.FK__Consumo_C__ID_Cl__4CA06362" FromRole="Clientes" ToRole="Consumo_Cliente" />
+          <NavigationProperty Name="Cuenta_Cliente" Relationship="Self.FK__Cuenta_Cl__ID_Cl__60A75C0F" FromRole="Clientes" ToRole="Cuenta_Cliente" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK__Eventos__ID_Clie__693CA210" FromRole="Clientes" ToRole="Eventos" />
+          <NavigationProperty Name="llamadas_Cliente" Relationship="Self.FK__llamadas___ID_Cl__5CD6CB2B" FromRole="Clientes" ToRole="llamadas_Cliente" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.FK__Reservaci__ID_Cl__403A8C7D" FromRole="Clientes" ToRole="Reservaciones" />
+          <NavigationProperty Name="Factura_O_Boleta" Relationship="Hotel_Peor_Es_NadaModel.FK__Factura_O__ID_Cl__6477ECF3" FromRole="Clientes" ToRole="Factura_O_Boleta" />
+        </EntityType>
+        <EntityType Name="Compra_Producto">
+          <Key>
+            <PropertyRef Name="ID_Compra" />
+          </Key>
+          <Property Name="ID_Compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Prov" Type="Int32" Nullable="false" />
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Compra" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Total_pago" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Compra_Pr__ID_Pr__6FE99F9F" FromRole="Compra_Producto" ToRole="Proveedor" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Compra_Pr__ID_Pr__70DDC3D8" FromRole="Compra_Producto" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Consumo_Cliente">
+          <Key>
+            <PropertyRef Name="ID_consumo" />
+          </Key>
+          <Property Name="ID_consumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="ID_Refrigerador" Type="Int32" Nullable="false" />
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" />
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_Consumida" Type="Int32" Nullable="false" />
+          <Property Name="Total_pago" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="EstadoCC" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Consumo_C__ID_Cl__4CA06362" FromRole="Consumo_Cliente" ToRole="Clientes" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Consumo_C__ID_Ha__4E88ABD4" FromRole="Consumo_Cliente" ToRole="Habitaciones" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Consumo_C__ID_Pr__4F7CD00D" FromRole="Consumo_Cliente" ToRole="Productos" />
+          <NavigationProperty Name="Refrigeradores" Relationship="Self.FK__Consumo_C__ID_Re__4D94879B" FromRole="Consumo_Cliente" ToRole="Refrigeradores" />
+        </EntityType>
+        <EntityType Name="Cuenta_Cliente">
+          <Key>
+            <PropertyRef Name="ID_Cuenta" />
+          </Key>
+          <Property Name="ID_Cuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" />
+          <Property Name="ID_Reserva" Type="Int32" Nullable="false" />
+          <Property Name="Forma_Pago" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Total_llamadas" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Total_Refrigerador" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Total_estancia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Total_a_pagar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Cuenta_Cl__ID_Cl__60A75C0F" FromRole="Cuenta_Cliente" ToRole="Clientes" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Cuenta_Cl__ID_Ha__619B8048" FromRole="Cuenta_Cliente" ToRole="Habitaciones" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.FK__Cuenta_Cl__ID_Re__628FA481" FromRole="Cuenta_Cliente" ToRole="Reservaciones" />
+        </EntityType>
+        <EntityType Name="Devolucion_Producto">
+          <Key>
+            <PropertyRef Name="ID_Dev" />
+          </Key>
+          <Property Name="ID_Dev" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <Property Name="ID_Prov" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Dev" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Motivo_Dev" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Total_Dev" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Devolucio__ID_Pr__73BA3083" FromRole="Devolucion_Producto" ToRole="Productos" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Devolucio__ID_Pr__74AE54BC" FromRole="Devolucion_Producto" ToRole="Proveedor" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="ID_Evento" />
+          </Key>
+          <Property Name="ID_Evento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="ID_tipo_evento" Type="Int32" Nullable="false" />
+          <Property Name="Costo_Evento" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Fecha_Evento" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Eventos__ID_Clie__693CA210" FromRole="Eventos" ToRole="Clientes" />
+          <NavigationProperty Name="Tipo_Evento" Relationship="Self.FK__Eventos__ID_tipo__6A30C649" FromRole="Eventos" ToRole="Tipo_Evento" />
+        </EntityType>
+        <EntityType Name="Forma_Pago">
+          <Key>
+            <PropertyRef Name="ID_FPago" />
+          </Key>
+          <Property Name="ID_FPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Forma_Pago1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.FK__Reservaci__ID_FP__1F98B2C1" FromRole="Forma_Pago" ToRole="Reservaciones" />
+        </EntityType>
+        <EntityType Name="Habitaciones">
+          <Key>
+            <PropertyRef Name="ID_Hab" />
+          </Key>
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero_hab" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ID_TipoHab" Type="Int32" Nullable="false" />
+          <Property Name="EstadoH" Type="Boolean" />
+          <NavigationProperty Name="Consumo_Cliente" Relationship="Self.FK__Consumo_C__ID_Ha__4E88ABD4" FromRole="Habitaciones" ToRole="Consumo_Cliente" />
+          <NavigationProperty Name="Cuenta_Cliente" Relationship="Self.FK__Cuenta_Cl__ID_Ha__619B8048" FromRole="Habitaciones" ToRole="Cuenta_Cliente" />
+          <NavigationProperty Name="Tipo_Hab" Relationship="Self.FK__Habitacio__ID_Ti__3C69FB99" FromRole="Habitaciones" ToRole="Tipo_Hab" />
+          <NavigationProperty Name="llamadas_Cliente" Relationship="Self.FK__llamadas___ID_Ha__5DCAEF64" FromRole="Habitaciones" ToRole="llamadas_Cliente" />
+          <NavigationProperty Name="Productos_baño_hab" Relationship="Self.FK__Productos__ID_Ha__534D60F1" FromRole="Habitaciones" ToRole="Productos_baño_hab" />
+          <NavigationProperty Name="Refrigeradores" Relationship="Self.FK__Refrigera__ID_Ha__440B1D61" FromRole="Habitaciones" ToRole="Refrigeradores" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.FK__Reservaci__ID_Ha__3F466844" FromRole="Habitaciones" ToRole="Reservaciones" />
+          <NavigationProperty Name="Telefonos_Hab" Relationship="Self.FK__Telefonos__ID_Ha__5629CD9C" FromRole="Habitaciones" ToRole="Telefonos_Hab" />
+        </EntityType>
+        <EntityType Name="llamadas_Cliente">
+          <Key>
+            <PropertyRef Name="ID_llamada" />
+          </Key>
+          <Property Name="ID_llamada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Costo_llamada" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ID_Tel" Type="Int32" Nullable="false" />
+          <Property Name="ID_tipo_llamada" Type="Int32" Nullable="false" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__llamadas___ID_Cl__5CD6CB2B" FromRole="llamadas_Cliente" ToRole="Clientes" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__llamadas___ID_Ha__5DCAEF64" FromRole="llamadas_Cliente" ToRole="Habitaciones" />
+          <NavigationProperty Name="Telefonos_Hab" Relationship="Self.FK__llamadas___ID_Te__5AEE82B9" FromRole="llamadas_Cliente" ToRole="Telefonos_Hab" />
+          <NavigationProperty Name="Tipo_llamada" Relationship="Self.FK__llamadas___ID_ti__5BE2A6F2" FromRole="llamadas_Cliente" ToRole="Tipo_llamada" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ID_Producto" />
+          </Key>
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_vencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Existencia" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="EstadoP" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Compra_Producto" Relationship="Self.FK__Compra_Pr__ID_Pr__70DDC3D8" FromRole="Productos" ToRole="Compra_Producto" />
+          <NavigationProperty Name="Consumo_Cliente" Relationship="Self.FK__Consumo_C__ID_Pr__4F7CD00D" FromRole="Productos" ToRole="Consumo_Cliente" />
+          <NavigationProperty Name="Devolucion_Producto" Relationship="Self.FK__Devolucio__ID_Pr__73BA3083" FromRole="Productos" ToRole="Devolucion_Producto" />
+          <NavigationProperty Name="Productos_baño_hab" Relationship="Self.FK__Productos__ID_Pr__52593CB8" FromRole="Productos" ToRole="Productos_baño_hab" />
+          <NavigationProperty Name="Refrigerador_Productos" Relationship="Self.FK__Refrigera__ID_Pr__49C3F6B7" FromRole="Productos" ToRole="Refrigerador_Productos" />
+        </EntityType>
+        <EntityType Name="Productos_baño_hab">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Productos__ID_Ha__534D60F1" FromRole="Productos_baño_hab" ToRole="Habitaciones" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__ID_Pr__52593CB8" FromRole="Productos_baño_hab" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="ID_Prov" />
+          </Key>
+          <Property Name="ID_Prov" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PNP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SNP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PAP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SAP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TelP" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Compra_Producto" Relationship="Self.FK__Compra_Pr__ID_Pr__6FE99F9F" FromRole="Proveedor" ToRole="Compra_Producto" />
+          <NavigationProperty Name="Devolucion_Producto" Relationship="Self.FK__Devolucio__ID_Pr__74AE54BC" FromRole="Proveedor" ToRole="Devolucion_Producto" />
+        </EntityType>
+        <EntityType Name="Refrigerador_Productos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="ID_Refrigerador" Type="Int32" Nullable="false" />
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Refrigera__ID_Pr__49C3F6B7" FromRole="Refrigerador_Productos" ToRole="Productos" />
+          <NavigationProperty Name="Refrigeradores" Relationship="Self.FK__Refrigera__ID_Re__48CFD27E" FromRole="Refrigerador_Productos" ToRole="Refrigeradores" />
+        </EntityType>
+        <EntityType Name="Refrigeradores">
+          <Key>
+            <PropertyRef Name="ID_Refrigerador" />
+          </Key>
+          <Property Name="ID_Refrigerador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" />
+          <Property Name="EstadoR" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Consumo_Cliente" Relationship="Self.FK__Consumo_C__ID_Re__4D94879B" FromRole="Refrigeradores" ToRole="Consumo_Cliente" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Refrigera__ID_Ha__440B1D61" FromRole="Refrigeradores" ToRole="Habitaciones" />
+          <NavigationProperty Name="Refrigerador_Productos" Relationship="Self.FK__Refrigera__ID_Re__48CFD27E" FromRole="Refrigeradores" ToRole="Refrigerador_Productos" />
+        </EntityType>
+        <EntityType Name="Reservaciones">
+          <Key>
+            <PropertyRef Name="ID_reserva" />
+          </Key>
+          <Property Name="ID_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_reserva" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="tiempo_instancia" Type="Int32" Nullable="false" />
+          <Property Name="Estado_salida" Type="Boolean" Nullable="false" />
+          <Property Name="ID_FPago" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Reservaci__ID_Cl__403A8C7D" FromRole="Reservaciones" ToRole="Clientes" />
+          <NavigationProperty Name="Cuenta_Cliente" Relationship="Self.FK__Cuenta_Cl__ID_Re__628FA481" FromRole="Reservaciones" ToRole="Cuenta_Cliente" />
+          <NavigationProperty Name="Forma_Pago" Relationship="Self.FK__Reservaci__ID_FP__1F98B2C1" FromRole="Reservaciones" ToRole="Forma_Pago" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Reservaci__ID_Ha__3F466844" FromRole="Reservaciones" ToRole="Habitaciones" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Telefonos_Hab">
+          <Key>
+            <PropertyRef Name="ID_Tel" />
+          </Key>
+          <Property Name="ID_Tel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Hab" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Telefonos__ID_Ha__5629CD9C" FromRole="Telefonos_Hab" ToRole="Habitaciones" />
+          <NavigationProperty Name="llamadas_Cliente" Relationship="Self.FK__llamadas___ID_Te__5AEE82B9" FromRole="Telefonos_Hab" ToRole="llamadas_Cliente" />
+        </EntityType>
+        <EntityType Name="Tipo_Evento">
+          <Key>
+            <PropertyRef Name="ID_tipo_evento" />
+          </Key>
+          <Property Name="ID_tipo_evento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Evento1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK__Eventos__ID_tipo__6A30C649" FromRole="Tipo_Evento" ToRole="Eventos" />
+        </EntityType>
+        <EntityType Name="Tipo_Hab">
+          <Key>
+            <PropertyRef Name="ID_TipoHab" />
+          </Key>
+          <Property Name="ID_TipoHab" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_hab1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Habitacio__ID_Ti__3C69FB99" FromRole="Tipo_Hab" ToRole="Habitaciones" />
+        </EntityType>
+        <EntityType Name="Tipo_llamada">
+          <Key>
+            <PropertyRef Name="ID_tipo_llamada" />
+          </Key>
+          <Property Name="ID_tipo_llamada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_llamada1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="llamadas_Cliente" Relationship="Self.FK__llamadas___ID_ti__5BE2A6F2" FromRole="Tipo_llamada" ToRole="llamadas_Cliente" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID_U" />
+          </Key>
+          <Property Name="ID_U" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Rol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Hotel_Peor_Es_NadaModel.FK__Usuarios__ID_Rol__69FBBC1F" FromRole="Usuarios" ToRole="Roles" />
+          <Property Name="intentos" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Consumo_C__ID_Cl__4CA06362">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuenta_Cl__ID_Cl__60A75C0F">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Cuenta_Cliente" Type="Self.Cuenta_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Cuenta_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos__ID_Clie__693CA210">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_Cl__5CD6CB2B">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__ID_Cl__403A8C7D">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compra_Pr__ID_Pr__6FE99F9F">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Compra_Producto" Type="Self.Compra_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="ID_Prov" />
+            </Principal>
+            <Dependent Role="Compra_Producto">
+              <PropertyRef Name="ID_Prov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compra_Pr__ID_Pr__70DDC3D8">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Compra_Producto" Type="Self.Compra_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Compra_Producto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo_C__ID_Ha__4E88ABD4">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo_C__ID_Pr__4F7CD00D">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo_C__ID_Re__4D94879B">
+          <End Role="Refrigeradores" Type="Self.Refrigeradores" Multiplicity="1" />
+          <End Role="Consumo_Cliente" Type="Self.Consumo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Refrigeradores">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Principal>
+            <Dependent Role="Consumo_Cliente">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuenta_Cl__ID_Ha__619B8048">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Cuenta_Cliente" Type="Self.Cuenta_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Cuenta_Cliente">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuenta_Cl__ID_Re__628FA481">
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="1" />
+          <End Role="Cuenta_Cliente" Type="Self.Cuenta_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservaciones">
+              <PropertyRef Name="ID_reserva" />
+            </Principal>
+            <Dependent Role="Cuenta_Cliente">
+              <PropertyRef Name="ID_Reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devolucio__ID_Pr__73BA3083">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Devolucion_Producto" Type="Self.Devolucion_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Devolucion_Producto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devolucio__ID_Pr__74AE54BC">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Devolucion_Producto" Type="Self.Devolucion_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="ID_Prov" />
+            </Principal>
+            <Dependent Role="Devolucion_Producto">
+              <PropertyRef Name="ID_Prov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos__ID_tipo__6A30C649">
+          <End Role="Tipo_Evento" Type="Self.Tipo_Evento" Multiplicity="1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Evento">
+              <PropertyRef Name="ID_tipo_evento" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="ID_tipo_evento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__ID_FP__1F98B2C1">
+          <End Role="Forma_Pago" Type="Self.Forma_Pago" Multiplicity="1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forma_Pago">
+              <PropertyRef Name="ID_FPago" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="ID_FPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Habitacio__ID_Ti__3C69FB99">
+          <End Role="Tipo_Hab" Type="Self.Tipo_Hab" Multiplicity="1" />
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Hab">
+              <PropertyRef Name="ID_TipoHab" />
+            </Principal>
+            <Dependent Role="Habitaciones">
+              <PropertyRef Name="ID_TipoHab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_Ha__5DCAEF64">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productos__ID_Ha__534D60F1">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Productos_baño_hab" Type="Self.Productos_baño_hab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Productos_baño_hab">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Refrigera__ID_Ha__440B1D61">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Refrigeradores" Type="Self.Refrigeradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Refrigeradores">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__ID_Ha__3F466844">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Telefonos__ID_Ha__5629CD9C">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Telefonos_Hab" Type="Self.Telefonos_Hab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="ID_Hab" />
+            </Principal>
+            <Dependent Role="Telefonos_Hab">
+              <PropertyRef Name="ID_Hab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_Te__5AEE82B9">
+          <End Role="Telefonos_Hab" Type="Self.Telefonos_Hab" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telefonos_Hab">
+              <PropertyRef Name="ID_Tel" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_Tel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__llamadas___ID_ti__5BE2A6F2">
+          <End Role="Tipo_llamada" Type="Self.Tipo_llamada" Multiplicity="1" />
+          <End Role="llamadas_Cliente" Type="Self.llamadas_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_llamada">
+              <PropertyRef Name="ID_tipo_llamada" />
+            </Principal>
+            <Dependent Role="llamadas_Cliente">
+              <PropertyRef Name="ID_tipo_llamada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productos__ID_Pr__52593CB8">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Productos_baño_hab" Type="Self.Productos_baño_hab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Productos_baño_hab">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Refrigera__ID_Pr__49C3F6B7">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Refrigerador_Productos" Type="Self.Refrigerador_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Refrigerador_Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Refrigera__ID_Re__48CFD27E">
+          <End Role="Refrigeradores" Type="Self.Refrigeradores" Multiplicity="1" />
+          <End Role="Refrigerador_Productos" Type="Self.Refrigerador_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Refrigeradores">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Principal>
+            <Dependent Role="Refrigerador_Productos">
+              <PropertyRef Name="ID_Refrigerador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Hotel_Peor_Es_NadaEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Compra_Producto" EntityType="Self.Compra_Producto" />
+          <EntitySet Name="Consumo_Cliente" EntityType="Self.Consumo_Cliente" />
+          <EntitySet Name="Cuenta_Cliente" EntityType="Self.Cuenta_Cliente" />
+          <EntitySet Name="Devolucion_Producto" EntityType="Self.Devolucion_Producto" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" />
+          <EntitySet Name="Forma_Pago" EntityType="Self.Forma_Pago" />
+          <EntitySet Name="Habitaciones" EntityType="Self.Habitaciones" />
+          <EntitySet Name="llamadas_Cliente" EntityType="Self.llamadas_Cliente" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Productos_baño_hab" EntityType="Self.Productos_baño_hab" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Refrigerador_Productos" EntityType="Self.Refrigerador_Productos" />
+          <EntitySet Name="Refrigeradores" EntityType="Self.Refrigeradores" />
+          <EntitySet Name="Reservaciones" EntityType="Self.Reservaciones" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Telefonos_Hab" EntityType="Self.Telefonos_Hab" />
+          <EntitySet Name="Tipo_Evento" EntityType="Self.Tipo_Evento" />
+          <EntitySet Name="Tipo_Hab" EntityType="Self.Tipo_Hab" />
+          <EntitySet Name="Tipo_llamada" EntityType="Self.Tipo_llamada" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK__Consumo_C__ID_Cl__4CA06362" Association="Self.FK__Consumo_C__ID_Cl__4CA06362">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuenta_Cl__ID_Cl__60A75C0F" Association="Self.FK__Cuenta_Cl__ID_Cl__60A75C0F">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuenta_Cliente" EntitySet="Cuenta_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos__ID_Clie__693CA210" Association="Self.FK__Eventos__ID_Clie__693CA210">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_Cl__5CD6CB2B" Association="Self.FK__llamadas___ID_Cl__5CD6CB2B">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__ID_Cl__403A8C7D" Association="Self.FK__Reservaci__ID_Cl__403A8C7D">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compra_Pr__ID_Pr__6FE99F9F" Association="Self.FK__Compra_Pr__ID_Pr__6FE99F9F">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Compra_Producto" EntitySet="Compra_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compra_Pr__ID_Pr__70DDC3D8" Association="Self.FK__Compra_Pr__ID_Pr__70DDC3D8">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Compra_Producto" EntitySet="Compra_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo_C__ID_Ha__4E88ABD4" Association="Self.FK__Consumo_C__ID_Ha__4E88ABD4">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo_C__ID_Pr__4F7CD00D" Association="Self.FK__Consumo_C__ID_Pr__4F7CD00D">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo_C__ID_Re__4D94879B" Association="Self.FK__Consumo_C__ID_Re__4D94879B">
+            <End Role="Refrigeradores" EntitySet="Refrigeradores" />
+            <End Role="Consumo_Cliente" EntitySet="Consumo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuenta_Cl__ID_Ha__619B8048" Association="Self.FK__Cuenta_Cl__ID_Ha__619B8048">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Cuenta_Cliente" EntitySet="Cuenta_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuenta_Cl__ID_Re__628FA481" Association="Self.FK__Cuenta_Cl__ID_Re__628FA481">
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+            <End Role="Cuenta_Cliente" EntitySet="Cuenta_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devolucio__ID_Pr__73BA3083" Association="Self.FK__Devolucio__ID_Pr__73BA3083">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Devolucion_Producto" EntitySet="Devolucion_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devolucio__ID_Pr__74AE54BC" Association="Self.FK__Devolucio__ID_Pr__74AE54BC">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Devolucion_Producto" EntitySet="Devolucion_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos__ID_tipo__6A30C649" Association="Self.FK__Eventos__ID_tipo__6A30C649">
+            <End Role="Tipo_Evento" EntitySet="Tipo_Evento" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__ID_FP__1F98B2C1" Association="Self.FK__Reservaci__ID_FP__1F98B2C1">
+            <End Role="Forma_Pago" EntitySet="Forma_Pago" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Habitacio__ID_Ti__3C69FB99" Association="Self.FK__Habitacio__ID_Ti__3C69FB99">
+            <End Role="Tipo_Hab" EntitySet="Tipo_Hab" />
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_Ha__5DCAEF64" Association="Self.FK__llamadas___ID_Ha__5DCAEF64">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productos__ID_Ha__534D60F1" Association="Self.FK__Productos__ID_Ha__534D60F1">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Productos_baño_hab" EntitySet="Productos_baño_hab" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Refrigera__ID_Ha__440B1D61" Association="Self.FK__Refrigera__ID_Ha__440B1D61">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Refrigeradores" EntitySet="Refrigeradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__ID_Ha__3F466844" Association="Self.FK__Reservaci__ID_Ha__3F466844">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Telefonos__ID_Ha__5629CD9C" Association="Self.FK__Telefonos__ID_Ha__5629CD9C">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Telefonos_Hab" EntitySet="Telefonos_Hab" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_Te__5AEE82B9" Association="Self.FK__llamadas___ID_Te__5AEE82B9">
+            <End Role="Telefonos_Hab" EntitySet="Telefonos_Hab" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__llamadas___ID_ti__5BE2A6F2" Association="Self.FK__llamadas___ID_ti__5BE2A6F2">
+            <End Role="Tipo_llamada" EntitySet="Tipo_llamada" />
+            <End Role="llamadas_Cliente" EntitySet="llamadas_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productos__ID_Pr__52593CB8" Association="Self.FK__Productos__ID_Pr__52593CB8">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Productos_baño_hab" EntitySet="Productos_baño_hab" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Refrigera__ID_Pr__49C3F6B7" Association="Self.FK__Refrigera__ID_Pr__49C3F6B7">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Refrigerador_Productos" EntitySet="Refrigerador_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Refrigera__ID_Re__48CFD27E" Association="Self.FK__Refrigera__ID_Re__48CFD27E">
+            <End Role="Refrigeradores" EntitySet="Refrigeradores" />
+            <End Role="Refrigerador_Productos" EntitySet="Refrigerador_Productos" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="Hotel_Peor_Es_NadaModel.Roles" />
+          <AssociationSet Name="FK__Usuarios__ID_Rol__69FBBC1F" Association="Hotel_Peor_Es_NadaModel.FK__Usuarios__ID_Rol__69FBBC1F">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="Factura_O_Boleta" EntityType="Hotel_Peor_Es_NadaModel.Factura_O_Boleta" />
+          <AssociationSet Name="FK__Factura_O__ID_Cl__6477ECF3" Association="Hotel_Peor_Es_NadaModel.FK__Factura_O__ID_Cl__6477ECF3">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Factura_O_Boleta" EntitySet="Factura_O_Boleta" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Rol" />
+          </Key>
+          <Property Name="ID_Rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="Hotel_Peor_Es_NadaModel.FK__Usuarios__ID_Rol__69FBBC1F" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK__Usuarios__ID_Rol__69FBBC1F">
+          <End Type="Hotel_Peor_Es_NadaModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="Hotel_Peor_Es_NadaModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Rol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="ID_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Factura_O_Boleta">
+          <Key>
+            <PropertyRef Name="ID_Fac" />
+          </Key>
+          <Property Name="ID_Fac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RUT" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Total_Pago" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Clientes" Relationship="Hotel_Peor_Es_NadaModel.FK__Factura_O__ID_Cl__6477ECF3" FromRole="Factura_O_Boleta" ToRole="Clientes" />
+        </EntityType>
+        <Association Name="FK__Factura_O__ID_Cl__6477ECF3">
+          <End Type="Hotel_Peor_Es_NadaModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="Hotel_Peor_Es_NadaModel.Factura_O_Boleta" Role="Factura_O_Boleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Factura_O_Boleta">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Hotel_Peor_Es_NadaModelStoreContainer" CdmEntityContainer="Hotel_Peor_Es_NadaEntities1">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="PNC" ColumnName="PNC" />
+                <ScalarProperty Name="SNC" ColumnName="SNC" />
+                <ScalarProperty Name="PAC" ColumnName="PAC" />
+                <ScalarProperty Name="SAC" ColumnName="SAC" />
+                <ScalarProperty Name="TelC" ColumnName="TelC" />
+                <ScalarProperty Name="EstadoC" ColumnName="EstadoC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compra_Producto">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Compra_Producto">
+              <MappingFragment StoreEntitySet="Compra_Producto">
+                <ScalarProperty Name="ID_Compra" ColumnName="ID_Compra" />
+                <ScalarProperty Name="ID_Prov" ColumnName="ID_Prov" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Fecha_Compra" ColumnName="Fecha_Compra" />
+                <ScalarProperty Name="Total_pago" ColumnName="Total_pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consumo_Cliente">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Consumo_Cliente">
+              <MappingFragment StoreEntitySet="Consumo_Cliente">
+                <ScalarProperty Name="ID_consumo" ColumnName="ID_consumo" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="ID_Refrigerador" ColumnName="ID_Refrigerador" />
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="Cantidad_Consumida" ColumnName="Cantidad_Consumida" />
+                <ScalarProperty Name="Total_pago" ColumnName="Total_pago" />
+                <ScalarProperty Name="EstadoCC" ColumnName="EstadoCC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuenta_Cliente">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Cuenta_Cliente">
+              <MappingFragment StoreEntitySet="Cuenta_Cliente">
+                <ScalarProperty Name="ID_Cuenta" ColumnName="ID_Cuenta" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+                <ScalarProperty Name="ID_Reserva" ColumnName="ID_Reserva" />
+                <ScalarProperty Name="Forma_Pago" ColumnName="Forma_Pago" />
+                <ScalarProperty Name="Total_llamadas" ColumnName="Total_llamadas" />
+                <ScalarProperty Name="Total_Refrigerador" ColumnName="Total_Refrigerador" />
+                <ScalarProperty Name="Total_estancia" ColumnName="Total_estancia" />
+                <ScalarProperty Name="Total_a_pagar" ColumnName="Total_a_pagar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devolucion_Producto">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Devolucion_Producto">
+              <MappingFragment StoreEntitySet="Devolucion_Producto">
+                <ScalarProperty Name="ID_Dev" ColumnName="ID_Dev" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="ID_Prov" ColumnName="ID_Prov" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Fecha_Dev" ColumnName="Fecha_Dev" />
+                <ScalarProperty Name="Motivo_Dev" ColumnName="Motivo_Dev" />
+                <ScalarProperty Name="Total_Dev" ColumnName="Total_Dev" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Eventos">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="ID_Evento" ColumnName="ID_Evento" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="ID_tipo_evento" ColumnName="ID_tipo_evento" />
+                <ScalarProperty Name="Costo_Evento" ColumnName="Costo_Evento" />
+                <ScalarProperty Name="Fecha_Evento" ColumnName="Fecha_Evento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forma_Pago">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Forma_Pago">
+              <MappingFragment StoreEntitySet="Forma_Pago">
+                <ScalarProperty Name="ID_FPago" ColumnName="ID_FPago" />
+                <ScalarProperty Name="Forma_Pago1" ColumnName="Forma_Pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitaciones">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Habitaciones">
+              <MappingFragment StoreEntitySet="Habitaciones">
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+                <ScalarProperty Name="Numero_hab" ColumnName="Numero_hab" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="ID_TipoHab" ColumnName="ID_TipoHab" />
+                <ScalarProperty Name="EstadoH" ColumnName="EstadoH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="llamadas_Cliente">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.llamadas_Cliente">
+              <MappingFragment StoreEntitySet="llamadas_Cliente">
+                <ScalarProperty Name="ID_llamada" ColumnName="ID_llamada" />
+                <ScalarProperty Name="Costo_llamada" ColumnName="Costo_llamada" />
+                <ScalarProperty Name="ID_Tel" ColumnName="ID_Tel" />
+                <ScalarProperty Name="ID_tipo_llamada" ColumnName="ID_tipo_llamada" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="EstadoP" ColumnName="EstadoP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos_baño_hab">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Productos_baño_hab">
+              <MappingFragment StoreEntitySet="Productos_baño_hab">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="ID_Prov" ColumnName="ID_Prov" />
+                <ScalarProperty Name="PNP" ColumnName="PNP" />
+                <ScalarProperty Name="SNP" ColumnName="SNP" />
+                <ScalarProperty Name="PAP" ColumnName="PAP" />
+                <ScalarProperty Name="SAP" ColumnName="SAP" />
+                <ScalarProperty Name="TelP" ColumnName="TelP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refrigerador_Productos">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Refrigerador_Productos">
+              <MappingFragment StoreEntitySet="Refrigerador_Productos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="ID_Refrigerador" ColumnName="ID_Refrigerador" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refrigeradores">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Refrigeradores">
+              <MappingFragment StoreEntitySet="Refrigeradores">
+                <ScalarProperty Name="ID_Refrigerador" ColumnName="ID_Refrigerador" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+                <ScalarProperty Name="EstadoR" ColumnName="EstadoR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservaciones">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Reservaciones">
+              <MappingFragment StoreEntitySet="Reservaciones">
+                <ScalarProperty Name="ID_reserva" ColumnName="ID_reserva" />
+                <ScalarProperty Name="fecha_reserva" ColumnName="fecha_reserva" />
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="tiempo_instancia" ColumnName="tiempo_instancia" />
+                <ScalarProperty Name="Estado_salida" ColumnName="Estado_salida" />
+                <ScalarProperty Name="ID_FPago" ColumnName="ID_FPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telefonos_Hab">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Telefonos_Hab">
+              <MappingFragment StoreEntitySet="Telefonos_Hab">
+                <ScalarProperty Name="ID_Tel" ColumnName="ID_Tel" />
+                <ScalarProperty Name="ID_Hab" ColumnName="ID_Hab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Evento">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Tipo_Evento">
+              <MappingFragment StoreEntitySet="Tipo_Evento">
+                <ScalarProperty Name="ID_tipo_evento" ColumnName="ID_tipo_evento" />
+                <ScalarProperty Name="Tipo_Evento1" ColumnName="Tipo_Evento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Hab">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Tipo_Hab">
+              <MappingFragment StoreEntitySet="Tipo_Hab">
+                <ScalarProperty Name="ID_TipoHab" ColumnName="ID_TipoHab" />
+                <ScalarProperty Name="Tipo_hab1" ColumnName="Tipo_hab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_llamada">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Tipo_llamada">
+              <MappingFragment StoreEntitySet="Tipo_llamada">
+                <ScalarProperty Name="ID_tipo_llamada" ColumnName="ID_tipo_llamada" />
+                <ScalarProperty Name="Tipo_llamada1" ColumnName="Tipo_llamada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="intentos" ColumnName="intentos" />
+                <ScalarProperty Name="ID_Rol" ColumnName="ID_Rol" />
+                <ScalarProperty Name="ID_U" ColumnName="ID_U" />
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="ID_Rol" ColumnName="ID_Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura_O_Boleta">
+            <EntityTypeMapping TypeName="Hotel_Peor_Es_NadaModel.Factura_O_Boleta">
+              <MappingFragment StoreEntitySet="Factura_O_Boleta">
+                <ScalarProperty Name="Total_Pago" ColumnName="Total_Pago" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="ID_Fac" ColumnName="ID_Fac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

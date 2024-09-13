@@ -1,0 +1,56 @@
+﻿@model WebApplication1.Models.Habitaciones
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Está seguro que desea eliminar este registro?</h3>
+<div>
+    <h4>Habitaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Número de habitación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            Estado de la habitación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoH)
+        </dd>
+
+        <dt>
+            Tipo de habitación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Hab.Tipo_hab1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,74 @@
+﻿@model WebApplication1.Models.Consumo_Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Consumo_Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad_Consumida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad_Consumida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.PNC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.PNC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitaciones.ID_Hab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitaciones.ID_Hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Productos.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Productos.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Refrigeradores.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Refrigeradores.Marca)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_consumo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

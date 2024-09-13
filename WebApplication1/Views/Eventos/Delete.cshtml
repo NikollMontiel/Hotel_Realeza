@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.Eventos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Está seguro que desea eliminar este evento?</h3>
+<div>
+    <h4>Eventos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Fecha evento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Evento)
+        </dd>
+
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.PNC)
+        </dd>
+
+        <dt>
+           Tipo de evento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Evento.Tipo_Evento1)
+        </dd>
+        <dt>
+            Costo del evento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Costo_Evento)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

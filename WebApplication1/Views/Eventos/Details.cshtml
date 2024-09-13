@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Eventos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Eventos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Fecha del evento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Evento)
+        </dd>
+
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.PNC)
+        </dd>
+
+        <dt>
+           Tipo de evento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Evento.Tipo_Evento1)
+        </dd>
+
+        <dt>
+            Costo del evento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costo_Evento)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_Evento }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

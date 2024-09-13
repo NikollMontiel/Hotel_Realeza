@@ -1,0 +1,58 @@
+﻿@model WebApplication1.Models.Proveedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Primer nombre proveedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PNP)
+        </dd>
+
+        <dt>
+            Segundo nombre proveedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SNP)
+        </dd>
+
+        <dt>
+            Primer apellido proveedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAP)
+        </dd>
+
+        <dt>
+            Segundo apellido proveedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SAP)
+        </dd>
+
+        <dt>
+            Teléfono
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_Prov }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

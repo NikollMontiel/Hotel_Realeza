@@ -1,0 +1,82 @@
+﻿@model WebApplication1.Models.Cuenta_Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cuenta_Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Forma_Pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forma_Pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_llamadas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_llamadas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Refrigerador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Refrigerador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_estancia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_estancia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_a_pagar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_a_pagar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.PNC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.PNC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitaciones.ID_Hab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitaciones.ID_Hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservaciones.ID_reserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservaciones.ID_reserva)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Cuenta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

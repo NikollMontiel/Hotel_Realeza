@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd0a75a925c74da4bedc87a3a326b1e6" Name="Diagram1">
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Clientes" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Compra_Producto" Width="1.5" PointX="11" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Consumo_Cliente" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Cuenta_Cliente" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Devolucion_Producto" Width="1.5" PointX="14" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Eventos" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Forma_Pago" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Habitaciones" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.llamadas_Cliente" Width="1.5" PointX="7.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Productos" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Productos_baño_hab" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Proveedor" Width="1.5" PointX="8.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Refrigerador_Productos" Width="1.5" PointX="7.5" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Refrigeradores" Width="1.5" PointX="5.25" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Reservaciones" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Telefonos_Hab" Width="1.5" PointX="5.25" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Tipo_Evento" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Tipo_Hab" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Tipo_llamada" Width="1.5" PointX="5.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Usuarios" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Consumo_C__ID_Cl__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Cuenta_Cl__ID_Cl__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Eventos__ID_Clie__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__llamadas___ID_Cl__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Reservaci__ID_Cl__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Compra_Pr__ID_Pr__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Compra_Pr__ID_Pr__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Consumo_C__ID_Ha__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Consumo_C__ID_Pr__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Consumo_C__ID_Re__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Cuenta_Cl__ID_Ha__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Cuenta_Cl__ID_Re__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Devolucio__ID_Pr__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Devolucio__ID_Pr__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Eventos__ID_tipo__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Reservaci__ID_FP__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Habitacio__ID_Ti__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__llamadas___ID_Ha__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Productos__ID_Ha__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Refrigera__ID_Ha__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Reservaci__ID_Ha__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Telefonos__ID_Ha__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__llamadas___ID_Te__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__llamadas___ID_ti__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Productos__ID_Pr__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Refrigera__ID_Pr__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Refrigera__ID_Re__48CFD27E" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Roles" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Usuarios__ID_Rol__69FBBC1F" />
+        <EntityTypeShape EntityType="Hotel_Peor_Es_NadaModel.Factura_O_Boleta" Width="1.5" PointX="5.25" PointY="16.625" />
+        <AssociationConnector Association="Hotel_Peor_Es_NadaModel.FK__Factura_O__ID_Cl__6477ECF3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

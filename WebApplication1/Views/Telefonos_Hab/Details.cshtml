@@ -1,0 +1,26 @@
+﻿@model WebApplication1.Models.Telefonos_Hab
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Telefonos_Hab</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitaciones.ID_Hab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitaciones.ID_Hab)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Tel }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

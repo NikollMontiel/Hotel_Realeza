@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebApplication1.Models.Cuenta_Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Forma_Pago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_llamadas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Refrigerador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_estancia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_a_pagar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clientes.PNC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habitaciones.ID_Hab)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reservaciones.ID_reserva)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Forma_Pago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_llamadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Refrigerador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_estancia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_a_pagar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.PNC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habitaciones.ID_Hab)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reservaciones.ID_reserva)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Cuenta }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Cuenta }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Cuenta })
+        </td>
+    </tr>
+}
+
+</table>

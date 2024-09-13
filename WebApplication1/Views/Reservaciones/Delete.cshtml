@@ -1,0 +1,80 @@
+﻿@model WebApplication1.Models.Reservaciones
+
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eliminar</title>
+</head>
+<body>
+    <h3>Está seguro que desea eliminar este registro?</h3>
+    <div>
+        <h4>Reservaciones</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha_reserva)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fecha_reserva)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tiempo_instancia)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tiempo_instancia)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado_salida)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Estado_salida)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Clientes.PNC)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Clientes.PNC)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Forma_Pago.Forma_Pago1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Forma_Pago.Forma_Pago1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Habitaciones.ID_Hab)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Habitaciones.ID_Hab)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                @Html.ActionLink("Volver a la lista", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

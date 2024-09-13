@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.Factura_O_Boleta
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Factura_O_Boleta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RUT)
+        </dd>
+
+        <dt>
+           Total de pago
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Pago)
+        </dd>
+
+        <dt>
+           Cliente  
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.PNC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_Fac }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

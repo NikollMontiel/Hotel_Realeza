@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication1.Models.Consumo_Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad_Consumida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_pago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoCC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clientes.PNC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habitaciones.ID_Hab)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Productos.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Refrigeradores.Marca)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad_Consumida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_pago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.PNC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habitaciones.ID_Hab)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Productos.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Refrigeradores.Marca)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_consumo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_consumo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_consumo })
+        </td>
+    </tr>
+}
+
+</table>

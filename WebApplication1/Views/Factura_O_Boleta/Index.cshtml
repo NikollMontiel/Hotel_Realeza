@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication1.Models.Factura_O_Boleta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Facturas y boletas</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva factura", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Rut empresa
+        </th>
+        <th>
+            Total a pagar
+        </th>
+        <th>
+            Nombre cliente
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RUT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Pago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.PNC)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_Fac }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_Fac }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_Fac })
+        </td>
+    </tr>
+}
+
+</table>
